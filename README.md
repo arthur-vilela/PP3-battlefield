@@ -1,4 +1,14 @@
 ![flowchart of the game logic](assets/docs/flowchart.png)
+## Bugs
+
+```
+File "/workspace/PP3-battlefield/run.py", line 4, in __init__
+    self.grid = [['-' for _ in range(size)] for _ in range(size)]
+                                                     ^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+```
+
+The size input was being received as a string, instead of integer. Fixed by add int() to the function
 
 Welcome,
 
