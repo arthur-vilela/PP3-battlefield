@@ -1,4 +1,4 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![flowchart of the game logic](assets/docs/flowchart.png)
 
 Welcome,
 
