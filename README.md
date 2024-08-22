@@ -27,9 +27,25 @@ TypeError: Grid.place_ships() takes 0 positional arguments but 1 was given
 Fixed by adding `self` as a parameter in `place_ships()` function. This parameter is necessary for it to access the Grid instance and check if the cell is empty in `self[row][col]`
 
 
+```
+Traceback (most recent call last):
+  File "/workspace/PP3-battlefield/run.py", line 54, in <module>
+    main()
+  File "/workspace/PP3-battlefield/run.py", line 43, in main
+    player_grid.place_ships()
+  File "/workspace/PP3-battlefield/run.py", line 28, in place_ships
+    if self[row][col] == "-": # Checks if hte cell is empty ("-")
+       ~~~~^^^^^
+TypeError: 'Grid' object is not subscriptable
+```
+
+>  This error occurs because of a mistake in how you're trying to access the grid within the place_ships method. Specifically, the line if self[row][col] == "-" is trying to use the Grid object itself as if it were a list, but self refers to the entire Grid object, not just the grid attribute inside it. ADD LINK TO FERNANDOS GITHUB PAGE
+
 ## Credits
 
 - Solution for the positional argument bug was found in [this answer](https://stackoverflow.com/questions/43839536/typeerror-generatecode-takes-0-positional-arguments-but-1-was-given) on StackOverflow
+
+- Solution for the `TypeError: 'Grid' object is not subscriptable` bug was given by developer Fernando Vilela ADD GITHUB LINK
 
 ## Reminders
 

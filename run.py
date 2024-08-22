@@ -25,8 +25,8 @@ class Grid:
         while True:
             row = random.randint(0, self.size -1)
             col = random.randint(0, self.size -1)
-            if self[row][col] == "-": # Checks if hte cell is empty ("-")
-                self[row][col] == "S" # Adds a ship ("S")
+            if self.grid[row][col] == "-": # Checks if hte cell is empty ("-")
+                self.grid[row][col] = "S" # Adds a ship ("S")
                 break
 
 
