@@ -1,3 +1,5 @@
+import random
+
 class Grid:
     def __init__(self, size): #size is given via user input
         self.size = size
@@ -14,6 +16,18 @@ class Grid:
                     print(' '.join(row))
                 else:
                     print(' '.join(['-' if cell == 'S' else cell for cell in row]))
+    
+
+    def place_ships(self):
+        """
+        Randomly adds 1 ship to both grids
+        """
+        while True:
+            row = random.randint(0, self.size -1)
+            col = random.randint(0, self.size -1)
+            if self[row][col] == "-": # Checks if hte cell is empty ("-")
+                self[row][col] == "S" # Adds a ship ("S")
+                break
 
 
 def main():
@@ -24,6 +38,10 @@ def main():
     # Create Grid class
     player_grid = Grid(grid_size) 
     computer_grid = Grid(grid_size)
+
+    # Place ship in grids
+    player_grid.place_ships()
+    computer_grid.place_ships()
 
     # Display the grids
     print(f"\n{user_name}'s Grid:")

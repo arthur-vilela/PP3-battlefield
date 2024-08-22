@@ -10,9 +10,26 @@ TypeError: 'str' object cannot be interpreted as an integer
 
 The size input was being received as a string, instead of integer. Fixed by add int() to the function
 
-Welcome,
+```
+ $ python3 run.py
+Please enter your name: 
+Art
+Hi Art, enter grid size (e.g., 5 for a 5x5 grid): 
+3
+Traceback (most recent call last):
+  File "/workspace/PP3-battlefield/run.py", line 54, in <module>
+    main()
+  File "/workspace/PP3-battlefield/run.py", line 43, in main
+    player_grid.place_ships()
+TypeError: Grid.place_ships() takes 0 positional arguments but 1 was given
+```
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+Fixed by adding `self` as a parameter in `place_ships()` function. This parameter is necessary for it to access the Grid instance and check if the cell is empty in `self[row][col]`
+
+
+## Credits
+
+- Solution for the positional argument bug was found in [this answer](https://stackoverflow.com/questions/43839536/typeerror-generatecode-takes-0-positional-arguments-but-1-was-given) on StackOverflow
 
 ## Reminders
 
