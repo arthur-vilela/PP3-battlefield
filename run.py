@@ -29,11 +29,38 @@ class Grid:
                 self.grid[row][col] = "S" # Adds a ship ("S")
                 break
 
+def validate_data(value):
+    """
+    Validates that the grid size is an integer between 3 and 8.
+    Raises ValueError with a message if the input is invalid.
+    """
+    try:
+        value = int(value)
+    except ValueError:
+        raise ValueError(f'Invalid input: {value}. Please enter a valid integer.')
+    if value > 8:
+        raise ValueError(
+                f'The maximum grid size is 8 x 8. Please provide a number from 3 to 8'
+            )
+    elif value < 3:
+            raise ValueError(
+                f'The mininum grid size is 3 x 3. Please provide a number from 3 to 8'
+            )
+    else:
+        return value 
 
+            
 def main():
     # User defines grid size and name for greeting
     user_name = input("Please enter your name: \n")
-    grid_size = int(input(f"Hi {user_name}, enter grid size (e.g., 5 for a 5x5 grid): \n"))
+    
+    while True:
+        grid_size = input(f"Hi {user_name}, enter grid size (3 to 8 for a 3x3 to 8x8 grid): \n")
+        try:
+            grid_size = validate_data(grid_size)
+            break  # Exit loop if input is valid
+        except ValueError as e:
+            print(e)
 
     # Create Grid class
     player_grid = Grid(grid_size) 
