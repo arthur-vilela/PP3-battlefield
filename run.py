@@ -22,7 +22,7 @@ class Grid:
         """
         Randomly adds 1 ship to both grids
         """
-        while True:
+        while True: 
             row = random.randint(0, self.size -1)
             col = random.randint(0, self.size -1)
             if self.grid[row][col] == "-": # Checks if hte cell is empty ("-")
@@ -49,11 +49,37 @@ def validate_data(value):
     else:
         return value 
 
-            
+
+def get_user_input(grid_size):
+    """
+    Prompts the user to input the row and column separately.
+    Validates the input and returns the corresponding row and column indices.
+    """
+    while True:
+        try:
+            # Prompt for row input
+            row = int(input(f"Enter the row number (1 to {grid_size}): ")) - 1
+            if row < 0 or row >= grid_size:
+                print(f"Invalid row. Please enter a number between 1 and {grid_size}.")
+                continue
+
+            # Prompt for column input
+            col = int(input(f"Enter the column number (1 to {grid_size}): ")) - 1
+            if col < 0 or col >= grid_size:
+                print(f"Invalid column. Please enter a number between 1 and {grid_size}.")
+                continue
+
+            return row, col
+
+        except ValueError:
+                print("Invalid input. Please enter valid numbers.")
+
+
 def main():
-    # User defines grid size and name for greeting
+    # User defines name for greeting
     user_name = input("Please enter your name: \n")
     
+    # Validate grid size input for type and size
     while True:
         grid_size = input(f"Hi {user_name}, enter grid size (3 to 8 for a 3x3 to 8x8 grid): \n")
         try:
@@ -76,6 +102,16 @@ def main():
     
     print("\nComputer's Grid:")
     computer_grid.display_grid(reveal_ships=False)
+
+    # User chooses coordinate to "shoot"
+    while True:
+        row, col = get_user_input(grid_size)
+        
+        if computer_grid.grid[row][col] == 'S': # checking the spot on the grid
+            print("Hit!")
+        else:
+            print("Miss!")
+        break
 
 
 main()
