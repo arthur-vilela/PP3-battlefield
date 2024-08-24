@@ -7,15 +7,15 @@ class Grid:
 
 
     def display_grid(self, reveal_ships=False):
-            """
-            Displays the grid. If reveal_ships is True, shows ship ("S") locations.
-            If false, substitute "S" for "-"
-            """
-            for row in self.grid:
-                if reveal_ships:
-                    print(' '.join(row))
-                else:
-                    print(' '.join(['-' if cell == 'S' else cell for cell in row]))
+        """
+        Displays the grid. If reveal_ships is True, shows ship ("S") locations.
+        If false, substitute "S" for "-"
+        """
+        for row in self.grid:
+            if reveal_ships:
+                print(' '.join(row))
+            else:
+                print(' '.join(['-' if cell == 'S' else cell for cell in row]))
     
 
     def place_ships(self):
@@ -72,7 +72,7 @@ def get_user_input(grid_size):
             return row, col
 
         except ValueError:
-                print("Invalid input. Please enter valid numbers.")
+            print("Invalid input. Please enter valid numbers.")
 
 
 def main():
