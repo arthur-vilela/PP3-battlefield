@@ -141,7 +141,7 @@ def main():
         # Display the updated computer grid (hidden ships)
         print("\nComputer's Grid:")
         computer_grid.display_grid(reveal_ships=False)
-
+S
         # Check for victory condition (all ships hit)
         if all(cell != 'S' for row in computer_grid.grid for cell in row):
             print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
@@ -166,5 +166,10 @@ def main():
         # Display the updated player's grid
         print("\nYour Grid:")
         player_grid.display_grid(reveal_ships=True)
+
+        # Check for defeat condition (all ships hit)
+        if all(cell != 'S' for row in player_grid.grid for cell in row):
+            print("\nThe computer has sunk all your ships! Game over.")
+            break
 
 main()
