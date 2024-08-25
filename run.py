@@ -28,6 +28,13 @@ class Grid:
             if self.grid[row][col] == "-": # Checks if hte cell is empty ("-")
                 self.grid[row][col] = "S" # Adds a ship ("S")
                 break
+    
+    def check_for_ship(self, row, col):
+        """
+        Checks if there is a ship at the given (row, col) position on the internal grid.
+        Returns True if there is a ship ('S'), otherwise False.
+        """
+        return self.grid[row][col] == "S"
 
 def validate_data(value):
     """
@@ -107,7 +114,7 @@ def main():
     while True:
         row, col = get_user_input(grid_size)
         
-        if computer_grid.grid[row][col] == 'S': # checking the spot on the grid
+        if computer_grid.check_for_ship(row, col): # checking the spot on the grid
             print("Hit!")
         else:
             print("Miss!")
