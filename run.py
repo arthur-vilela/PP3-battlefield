@@ -147,4 +147,24 @@ def main():
             print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
             break
 
+        # Computer's turn
+        print("\nComputer's turn:")
+        while True:
+            row = random.randint(0, grid_size - 1)
+            col = random.randint(0, grid_size - 1)
+            if player_grid.grid[row][col] not in ['X', 'O']:
+                break
+        
+        hit = player_grid.check_for_ship(row, col)
+        player_grid.update_grid(row, col, hit)
+
+        if hit:
+            print(f"The computer hit your ship at ({row + 1}, {col + 1})!")
+        else:
+            print("The computer missed.")
+
+        # Display the updated player's grid
+        print("\nYour Grid:")
+        player_grid.display_grid(reveal_ships=True)
+
 main()
