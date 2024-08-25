@@ -35,6 +35,16 @@ class Grid:
         Returns True if there is a ship ('S'), otherwise False.
         """
         return self.grid[row][col] == "S"
+    
+    def update_grid(self, row, col, hit):
+        """
+        Updates the grid if a ship is hit or missed.
+        Uses 'X' for hit and 'O' for miss.
+        """
+        if hit:
+            self.grid[row][col] = 'X'
+        else:
+            self.grid[row][col] = 'O'
 
 def validate_data(value):
     """
@@ -112,13 +122,21 @@ def main():
 
     # User chooses coordinate to "shoot"
     while True:
+        # Player's turn
+        print(f"\n{user_name}'s turn:")
         row, col = get_user_input(grid_size)
-        
-        if computer_grid.check_for_ship(row, col): # checking the spot on the grid
+
+        if computer_grid.grid[row][col] in ['X', 'O']:
+            print("You have already chosen this coordinate. Please try again.")
+            continue
+
+        hit = computer_grid.check_for_ship(row, col)
+        computer_grid.update_grid(row, col, hit)
+
+        if hit:
             print("Hit!")
         else:
             print("Miss!")
-        break
 
 
 main()
