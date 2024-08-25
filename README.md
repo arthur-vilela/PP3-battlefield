@@ -41,6 +41,22 @@ TypeError: 'Grid' object is not subscriptable
 
 >  This error occurs because of a mistake in how you're trying to access the grid within the place_ships method. Specifically, the line if self[row][col] == "-" is trying to use the Grid object itself as if it were a list, but self refers to the entire Grid object, not just the grid attribute inside it. ADD LINK TO FERNANDOS GITHUB PAGE
 
+```
+gitpod /workspace/PP3-battlefield (main) $ python3 run.py
+  File "/workspace/PP3-battlefield/run.py", line 148
+    break
+    ^^^^^
+SyntaxError: 'break' outside loop
+```
+Solved indentation issue by moving the if statement into the while loop
+
+```
+# Check for victory condition (all ships hit)
+    if all(cell != 'S' for row in computer_grid.grid for cell in row):
+        print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
+        break
+```
+
 ## Credits
 
 - Solution for the positional argument bug was found in [this answer](https://stackoverflow.com/questions/43839536/typeerror-generatecode-takes-0-positional-arguments-but-1-was-given) on StackOverflow
