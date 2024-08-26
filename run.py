@@ -1,4 +1,5 @@
 import random
+from colorama import Fore, Back, Style
 
 class Grid:
     def __init__(self, size): #size is given via user input
@@ -14,10 +15,10 @@ class Grid:
         """
         for row in self.grid:
             if reveal_ships:
-                print(' '.join(row))
+                print(Back.BLUE + ' '.join(row) + Style.RESET_ALL)
             else:
                 # Replace "S" with "~" to hide ships when displaying the grid
-                print(' '.join(['~' if cell == 'S' else cell for cell in row]))
+                print(Back.BLUE + ' '.join(['~' if cell == 'S' else cell for cell in row]) + Style.RESET_ALL)
     
     
     def determine_ship_count(self):
@@ -155,7 +156,7 @@ def main():
             if computer_grid.grid[row][col] in ['X', 'O']:
                 print("You have already chosen this coordinate. Please try again.")
                 continue
-            
+
             # Check for a hit and update the grid accordingly
             hit = computer_grid.check_for_ship(row, col)
             computer_grid.update_grid(row, col, hit)
