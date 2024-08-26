@@ -17,17 +17,35 @@ class Grid:
             else:
                 print(' '.join(['-' if cell == 'S' else cell for cell in row]))
     
+    
+    def determine_ship_count(self):
+        """
+        Determines the number of ships based on the grid size.
+        """
+        if self.size <= 4:
+            return 3
+        elif self.size == 5:
+            return 4
+        elif self.size == 6:
+            return 5
+        elif self.size == 7:
+            return 6
+        else:
+            return 7  # For grid sizes 8x8 or larger
+            
 
     def place_ships(self):
         """
-        Randomly adds 1 ship to both grids
+        Randomly adds a number of ships to the grid based on the grid size.
         """
-        while True: 
-            row = random.randint(0, self.size -1)
-            col = random.randint(0, self.size -1)
-            if self.grid[row][col] == "-": # Checks if hte cell is empty ("-")
-                self.grid[row][col] = "S" # Adds a ship ("S")
-                break
+        ship_count = self.determine_ship_count()
+        for _ in range(ship_count): # loops for the ship_count amount of times
+            while True: 
+                row = random.randint(0, self.size -1)
+                col = random.randint(0, self.size -1)
+                if self.grid[row][col] == "-": # Checks if hte cell is empty ("-")
+                    self.grid[row][col] = "S" # Adds a ship ("S")
+                    break
     
     def check_for_ship(self, row, col):
         """
