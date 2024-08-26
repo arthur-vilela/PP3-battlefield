@@ -162,9 +162,9 @@ def main():
             computer_grid.update_grid(row, col, hit)
 
             if hit:
-                print("Hit!")
+                print(Fore.GREEN + "\nHit!" + Style.RESET_ALL)
             else:
-                print("Miss!")
+                print(Fore.RED + "\nMiss!" + Style.RESET_ALL)
 
             # Display the updated computer grid (hidden ships)
             print("\nComputer's Grid:")
@@ -187,9 +187,9 @@ def main():
             player_grid.update_grid(row, col, hit)
 
             if hit:
-                print(f"The computer hit your ship at ({row + 1}, {col + 1})!")
+                print(f"\nThe computer hit your ship at ({row + 1}, {col + 1})!")
             else:
-                print("The computer missed.")
+                print("\nThe computer missed.")
 
             # Display the updated player's grid
             print("\nYour Grid:")
@@ -197,13 +197,13 @@ def main():
 
             # Check for defeat condition (all ships hit)
             if all(cell != 'S' for row in player_grid.grid for cell in row):
-                print("\nThe computer has sunk all your ships! Game over.")
+                print(Back.RED + "\nThe computer has sunk all your ships! Game over." + Style.RESET_ALL)
                 break
 
         # Ask if the user wants to play again
         play_again = input("\nDo you want to play again? (Y/N): ").strip().upper()
         if play_again != "Y":
-            print("Thanks for playing! Goodbye!")
+            print("\nThanks for playing! Goodbye!")
             break
 
 main()
