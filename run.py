@@ -2,25 +2,28 @@ import random
 
 class Grid:
     def __init__(self, size): #size is given via user input
+        # Initialize the grid with water represented by '~'
         self.size = size
-        self.grid = [['-' for _ in range(size)] for _ in range(size)]
+        self.grid = [['~' for _ in range(size)] for _ in range(size)]
 
 
     def display_grid(self, reveal_ships=False):
         """
         Displays the grid. If reveal_ships is True, shows ship ("S") locations.
-        If false, substitute "S" for "-"
+        If false, substitute "S" for "~"
         """
         for row in self.grid:
             if reveal_ships:
                 print(' '.join(row))
             else:
-                print(' '.join(['-' if cell == 'S' else cell for cell in row]))
+                # Replace "S" with "~" to hide ships when displaying the grid
+                print(' '.join(['~' if cell == 'S' else cell for cell in row]))
     
     
     def determine_ship_count(self):
         """
         Determines the number of ships based on the grid size.
+        Returns the number of ships to place on the grid.
         """
         if self.size <= 4:
             return 3
@@ -37,13 +40,14 @@ class Grid:
     def place_ships(self):
         """
         Randomly adds a number of ships to the grid based on the grid size.
+        The number of ships is determined by the determine_ship_count method.
         """
         ship_count = self.determine_ship_count()
         for _ in range(ship_count): # loops for the ship_count amount of times
             while True: 
                 row = random.randint(0, self.size -1)
                 col = random.randint(0, self.size -1)
-                if self.grid[row][col] == "-": # Checks if hte cell is empty ("-")
+                if self.grid[row][col] == "~": # Checks if hte cell is empty ("~")
                     self.grid[row][col] = "S" # Adds a ship ("S")
                     break
     
@@ -88,7 +92,8 @@ def validate_data(value):
 def get_user_input(grid_size):
     """
     Prompts the user to input the row and column separately.
-    Validates the input and returns the corresponding row and column indices.
+    Validates the input to ensure it is within the grid bounds.
+    Returns the corresponding row and column indices.
     """
     while True:
         try:
@@ -132,23 +137,26 @@ def main():
         player_grid.place_ships()
         computer_grid.place_ships()
 
-        # Display the grids
+        # Display the player's grid with ships revealed
         print(f"\n{user_name}'s Grid:")
         player_grid.display_grid(reveal_ships=True)
         
+        # Display the computer's grid with ships hidden
         print("\nComputer's Grid:")
         computer_grid.display_grid(reveal_ships=False)
 
-        # User chooses coordinate to "shoot"
+        # Start the game loop 
         while True:
-            # Player's turn
+            # Player's turn to chooses coordinate to "shoot"
             print(f"\n{user_name}'s turn:")
             row, col = get_user_input(grid_size)
 
+            # Check if the chosen coordinate has already been selected
             if computer_grid.grid[row][col] in ['X', 'O']:
                 print("You have already chosen this coordinate. Please try again.")
                 continue
-
+            
+            # Check for a hit and update the grid accordingly
             hit = computer_grid.check_for_ship(row, col)
             computer_grid.update_grid(row, col, hit)
 
