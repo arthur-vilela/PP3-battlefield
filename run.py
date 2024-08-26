@@ -1,6 +1,38 @@
 import random
 from colorama import Fore, Back, Style
 
+TITLE = """
+······················································
+: ██████╗  █████╗ ████████╗████████╗██╗     ███████╗ :
+: ██╔══██╗██╔══██╗╚══██╔══╝╚══██╔══╝██║     ██╔════╝ :
+: ██████╔╝███████║   ██║      ██║   ██║     █████╗   :
+: ██╔══██╗██╔══██║   ██║      ██║   ██║     ██╔══╝   :
+: ██████╔╝██║  ██║   ██║      ██║   ███████╗███████╗ :
+: ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝ :
+:                                                    :
+: ███████╗██╗███████╗██╗     ██████╗                 :
+: ██╔════╝██║██╔════╝██║     ██╔══██╗                :
+: █████╗  ██║█████╗  ██║     ██║  ██║                :
+: ██╔══╝  ██║██╔══╝  ██║     ██║  ██║                :
+: ██║     ██║███████╗███████╗██████╔╝                :
+: ╚═╝     ╚═╝╚══════╝╚══════╝╚═════╝                 :
+······················································
+"""
+
+SEA = """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
+
+EXPLOSION ="""
+           _ ._  _ , _ ._        
+        (_ ' ( `  )_  .__)       
+      ( (  (    )   `)  ) _)     
+     (__ (_   (_ . _) _) ,__)    
+         `~~`\ ' . /`~~`         
+              ;   ;              
+              /  \\               
+_____________/_ __ \_____________"""
+
 class Grid:
     def __init__(self, size): #size is given via user input
         # Initialize the grid with water represented by '~'
@@ -101,29 +133,31 @@ def get_user_input(grid_size):
             # Prompt for row input
             row = int(input(f"Enter the row number (1 to {grid_size}): ")) - 1
             if row < 0 or row >= grid_size:
-                print(f"Invalid row. Please enter a number between 1 and {grid_size}.")
+                print(Fore.YELLOW + f"Invalid row. Please enter a number between 1 and {grid_size}." + Style.RESET_ALL)
                 continue
 
             # Prompt for column input
             col = int(input(f"Enter the column number (1 to {grid_size}): ")) - 1
             if col < 0 or col >= grid_size:
-                print(f"Invalid column. Please enter a number between 1 and {grid_size}.")
+                print(Fore.YELLOW + f"Invalid column. Please enter a number between 1 and {grid_size}." + Style.RESET_ALL)
                 continue
 
             return row, col
 
         except ValueError:
-            print("Invalid input. Please enter valid numbers.")
+            print(Fore.YELLOW + "Invalid input. Please enter valid numbers.")
 
 
 def main():
     while True:
+        print(Fore.LIGHTBLUE_EX + TITLE + Style.RESET_ALL)
+
         # User defines name for greeting
         user_name = input("\nPlease enter your name: \n")
         
         # Validate grid size input for type and size
         while True:
-            grid_size = input(f"Hi {user_name}, enter grid size (3 to 8 for a 3x3 to 8x8 grid): \n")
+            grid_size = input(f"\nHi {user_name}, enter grid size (3 to 8 for a 3x3 to 8x8 grid): \n")
             try:
                 grid_size = validate_data(grid_size)
                 break  # Exit loop if input is valid
@@ -154,7 +188,7 @@ def main():
 
             # Check if the chosen coordinate has already been selected
             if computer_grid.grid[row][col] in ['X', 'O']:
-                print("You have already chosen this coordinate. Please try again.")
+                print(Fore.YELLOW + "You have already chosen this coordinate. Please try again.")
                 continue
 
             # Check for a hit and update the grid accordingly
@@ -163,6 +197,8 @@ def main():
 
             if hit:
                 print(Fore.GREEN + "\nHit!" + Style.RESET_ALL)
+                print(Back.WHITE + Fore.RED + EXPLOSION + Style.RESET_ALL)
+                print(Back.BLUE + SEA + Style.RESET_ALL)
             else:
                 print(Fore.RED + "\nMiss!" + Style.RESET_ALL)
 
