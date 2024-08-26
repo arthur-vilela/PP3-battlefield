@@ -111,83 +111,90 @@ def get_user_input(grid_size):
 
 
 def main():
-    # User defines name for greeting
-    user_name = input("Please enter your name: \n")
-    
-    # Validate grid size input for type and size
     while True:
-        grid_size = input(f"Hi {user_name}, enter grid size (3 to 8 for a 3x3 to 8x8 grid): \n")
-        try:
-            grid_size = validate_data(grid_size)
-            break  # Exit loop if input is valid
-        except ValueError as e:
-            print(e)
+        # User defines name for greeting
+        user_name = input("\nPlease enter your name: \n")
+        
+        # Validate grid size input for type and size
+        while True:
+            grid_size = input(f"Hi {user_name}, enter grid size (3 to 8 for a 3x3 to 8x8 grid): \n")
+            try:
+                grid_size = validate_data(grid_size)
+                break  # Exit loop if input is valid
+            except ValueError as e:
+                print(e)
 
-    # Create Grid class
-    player_grid = Grid(grid_size) 
-    computer_grid = Grid(grid_size)
+        # Create Grid class
+        player_grid = Grid(grid_size) 
+        computer_grid = Grid(grid_size)
 
-    # Place ship in grids
-    player_grid.place_ships()
-    computer_grid.place_ships()
+        # Place ship in grids
+        player_grid.place_ships()
+        computer_grid.place_ships()
 
-    # Display the grids
-    print(f"\n{user_name}'s Grid:")
-    player_grid.display_grid(reveal_ships=True)
-    
-    print("\nComputer's Grid:")
-    computer_grid.display_grid(reveal_ships=False)
-
-    # User chooses coordinate to "shoot"
-    while True:
-        # Player's turn
-        print(f"\n{user_name}'s turn:")
-        row, col = get_user_input(grid_size)
-
-        if computer_grid.grid[row][col] in ['X', 'O']:
-            print("You have already chosen this coordinate. Please try again.")
-            continue
-
-        hit = computer_grid.check_for_ship(row, col)
-        computer_grid.update_grid(row, col, hit)
-
-        if hit:
-            print("Hit!")
-        else:
-            print("Miss!")
-
-        # Display the updated computer grid (hidden ships)
+        # Display the grids
+        print(f"\n{user_name}'s Grid:")
+        player_grid.display_grid(reveal_ships=True)
+        
         print("\nComputer's Grid:")
         computer_grid.display_grid(reveal_ships=False)
 
-        # Check for victory condition (all ships hit)
-        if all(cell != 'S' for row in computer_grid.grid for cell in row):
-            print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
-            break
-
-        # Computer's turn
-        print("\nComputer's turn:")
+        # User chooses coordinate to "shoot"
         while True:
-            row = random.randint(0, grid_size - 1)
-            col = random.randint(0, grid_size - 1)
-            if player_grid.grid[row][col] not in ['X', 'O']:
+            # Player's turn
+            print(f"\n{user_name}'s turn:")
+            row, col = get_user_input(grid_size)
+
+            if computer_grid.grid[row][col] in ['X', 'O']:
+                print("You have already chosen this coordinate. Please try again.")
+                continue
+
+            hit = computer_grid.check_for_ship(row, col)
+            computer_grid.update_grid(row, col, hit)
+
+            if hit:
+                print("Hit!")
+            else:
+                print("Miss!")
+
+            # Display the updated computer grid (hidden ships)
+            print("\nComputer's Grid:")
+            computer_grid.display_grid(reveal_ships=False)
+
+            # Check for victory condition (all ships hit)
+            if all(cell != 'S' for row in computer_grid.grid for cell in row):
+                print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
                 break
-        
-        hit = player_grid.check_for_ship(row, col)
-        player_grid.update_grid(row, col, hit)
 
-        if hit:
-            print(f"The computer hit your ship at ({row + 1}, {col + 1})!")
-        else:
-            print("The computer missed.")
+            # Computer's turn
+            print("\nComputer's turn:")
+            while True:
+                row = random.randint(0, grid_size - 1)
+                col = random.randint(0, grid_size - 1)
+                if player_grid.grid[row][col] not in ['X', 'O']:
+                    break
+            
+            hit = player_grid.check_for_ship(row, col)
+            player_grid.update_grid(row, col, hit)
 
-        # Display the updated player's grid
-        print("\nYour Grid:")
-        player_grid.display_grid(reveal_ships=True)
+            if hit:
+                print(f"The computer hit your ship at ({row + 1}, {col + 1})!")
+            else:
+                print("The computer missed.")
 
-        # Check for defeat condition (all ships hit)
-        if all(cell != 'S' for row in player_grid.grid for cell in row):
-            print("\nThe computer has sunk all your ships! Game over.")
+            # Display the updated player's grid
+            print("\nYour Grid:")
+            player_grid.display_grid(reveal_ships=True)
+
+            # Check for defeat condition (all ships hit)
+            if all(cell != 'S' for row in player_grid.grid for cell in row):
+                print("\nThe computer has sunk all your ships! Game over.")
+                break
+
+        # Ask if the user wants to play again
+        play_again = input("\nDo you want to play again? (Y/N): ").strip().upper()
+        if play_again != "Y":
+            print("Thanks for playing! Goodbye!")
             break
 
 main()
