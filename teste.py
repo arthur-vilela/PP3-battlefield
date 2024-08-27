@@ -11,9 +11,9 @@ BOAT = """
    _______/_____\_______\_____     
    \              < < <       |"""
 
-SEA = """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SEA = Back.BLUE + """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
+""" + Style.RESET_ALL
 
 EXPLOSION ="""
            _ ._  _ , _ ._        
@@ -50,3 +50,4 @@ print(Back.WHITE + Fore.RED + EXPLOSION + Style.RESET_ALL)
 print(Back.BLUE + SEA + Style.RESET_ALL)
 
 print(Fore.LIGHTBLUE_EX + TITLE + Style.RESET_ALL)
+print(SEA)
