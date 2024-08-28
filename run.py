@@ -1,5 +1,6 @@
 import random
 import os
+import time
 from colorama import Fore, Back, Style
 
 TITLE = """
@@ -24,15 +25,21 @@ SEA = """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 
-EXPLOSION = """
+EXPLOSION = r"""
            _ ._  _ , _ ._        |
         (_ ' ( `  )_  .__)       |
       ( (  (    )   `)  ) _)     |
      (__ (_   (_ . _) _) ,__)    |
-         `~~`\\ ' . /`~~`         |
+         `~~`\\ ' . /`~~`        |
               ;   ;              |
               /  \\              |
-_____________/_ __\\_____________"""
+_____________/_ __\\_____________|"""
+
+BOAT = r"""
+                 __/___            
+           _____/______|           
+   _______/_____\_______\_____     
+   \              < < <       |"""
 
 
 class Grid:
@@ -219,6 +226,12 @@ def main():
                 print(Back.BLUE + SEA + Style.RESET_ALL)
             else:
                 print(Fore.RED + "\nMiss!" + Style.RESET_ALL)
+                print(BOAT)
+                print(Back.BLUE + SEA + Style.RESET_ALL)
+
+            time.sleep(1)  # Wait on ASCII art
+
+            os.system('cls||clear')  # Clear terminal after hit or miss
 
             # Display the updated computer grid (hidden ships)
             print("\nComputer's Grid:")
