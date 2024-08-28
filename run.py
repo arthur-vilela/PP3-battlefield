@@ -36,10 +36,10 @@ EXPLOSION = r"""
 _____________/_ __\\_____________|"""
 
 BOAT = r"""
-                 __/___            
-           _____/______|           
-   _______/_____\_______\_____     
-   \              < < <       |"""
+|                 __/___          |
+|           _____/______|         |
+|   _______/_____\_______\_____   |
+|   \              < < <       |  |"""
 
 
 class Grid:
@@ -61,10 +61,17 @@ class Grid:
         for index, row in enumerate(self.grid):
             if reveal_ships:
                 # Print row number followed by the row contents
-                print(f"{index + 1:2} " + Back.BLUE + ' '.join(row) + Style.RESET_ALL)
+                print(
+                    f"{index + 1:2} " + Back.BLUE +
+                    ' '.join(row) + Style.RESET_ALL
+                )
             else:
-                # Print row number followed by the row contents with ships hidden
-                print(f"{index + 1:2} " + Back.BLUE + ' '.join(['~' if cell == 'S' else cell for cell in row]) + Style.RESET_ALL)
+                # Print row number followed by row contents with ships hidden
+                print(
+                    f"{index + 1:2} " + Back.BLUE +
+                    ' '.join(['~' if cell == 'S' else cell for cell in row]) +
+                    Style.RESET_ALL
+                )
 
     def determine_ship_count(self):
         """
@@ -123,17 +130,18 @@ def validate_data(value):
     try:
         value = int(value)
     except ValueError:
-        raise ValueError(f'Invalid input: {value}.\
-            Please enter a valid integer.')
+        raise ValueError(
+            f'Invalid input: {value}.\nPlease enter a valid integer.'
+                )
     if value > 8:
         raise ValueError(
-                f'The maximum grid size is 8 x 8.\
-                Please provide a number from 3 to 8'
+                f'The maximum grid size is 8 x 8.\n'
+                + f'Please provide a number from 3 to 8'
             )
     elif value < 3:
         raise ValueError(
-                f'The mininum grid size is 3 x 3.\
-                Please provide a number from 3 to 8'
+                f'The mininum grid size is 3 x 3.\n'
+                + f'Please provide a number from 3 to 8'
             )
     else:
         return value
@@ -150,16 +158,24 @@ def get_user_input(grid_size):
             # Prompt for row input
             row = int(input(f"Enter the row number (1 to {grid_size}): ")) - 1
             if row < 0 or row >= grid_size:
-                print(Fore.YELLOW + f"Invalid row. Please enter a number\
-                      between 1 and {grid_size}." + Style.RESET_ALL)
+                print(
+                    Fore.YELLOW +
+                    f"Invalid row." +
+                    f"Please enter a number between 1 and {grid_size}."
+                    + Style.RESET_ALL
+                )
                 continue
 
             # Prompt for column input
-            col = int(input(f"Enter the column number\
-                            (1 to {grid_size}): ")) - 1
+            col = int(input(
+                    f"Enter the column number"
+                    + f"(1 to {grid_size}): ")) - 1
             if col < 0 or col >= grid_size:
-                print(Fore.YELLOW + f"Invalid column. Please enter a number\
-                between 1 and {grid_size}." + Style.RESET_ALL)
+                print(
+                    Fore.YELLOW + f"Invalid column." +
+                    f"Please enter a number between 1 and {grid_size}."
+                    + Style.RESET_ALL
+                )
                 continue
 
             return row, col
@@ -178,8 +194,10 @@ def main():
 
         # Validate grid size input for type and size
         while True:
-            grid_size = input(f"\nHi {user_name}, enter grid size (3 to 8 for\
-                              a 3x3 to 8x8 grid): \n")
+            grid_size = input(
+                f"\nHi {user_name}, enter grid size" +
+                "(3 to 8 for a 3x3 to 8x8 grid): \n"
+            )
             try:
                 grid_size = validate_data(grid_size)
                 break  # Exit loop if input is valid
@@ -210,8 +228,10 @@ def main():
 
             # Check if the chosen coordinate has already been selected
             if computer_grid.grid[row][col] in ['X', 'O']:
-                print(Fore.YELLOW + "You have already chosen this coordinate.\
-                      Please try again.")
+                print(
+                    Fore.YELLOW +
+                    "You have already chosen this coordinate." +
+                    "Please try again.")
                 continue
 
             os.system('cls||clear')
@@ -239,8 +259,10 @@ def main():
 
             # Check for victory condition (all ships hit)
             if all(cell != 'S' for row in computer_grid.grid for cell in row):
-                print(f"\nCongratulations {user_name}, you've sunk all the\
-                      computer's ships!")
+                print(
+                    f"\nCongratulations {user_name}," +
+                    "you've sunk all the computer's ships!"
+                )
                 break
 
             # Computer's turn
@@ -255,8 +277,9 @@ def main():
             player_grid.update_grid(row, col, hit)
 
             if hit:
-                print(f"\nThe computer hit your ship at ({row + 1},\
-                      {col + 1})!")
+                print(
+                    f"\nThe computer hit your ship at ({row + 1}, {col + 1})!"
+                )
             else:
                 print("\nThe computer missed.")
 
@@ -266,13 +289,17 @@ def main():
 
             # Check for defeat condition (all ships hit)
             if all(cell != 'S' for row in player_grid.grid for cell in row):
-                print(Back.RED + "\nThe computer has sunk all your ships!\
-                      Game over." + Style.RESET_ALL)
+                print(
+                    Back.RED +
+                    "\nThe computer has sunk all your ships! Game over."
+                    + Style.RESET_ALL
+                )
                 break
 
         # Ask if the user wants to play again
-        play_again = input("\nDo you want to play again?\
-                           (Y/N): ").strip().upper()
+        play_again = input(
+                    "\nDo you want to play again? (Y/N): "
+                    ).strip().upper()
         if play_again != "Y":
             print("\nThanks for playing! Goodbye!")
             break

@@ -66,10 +66,12 @@ Solved indentation issue by moving the if statement into the while loop
 - Explanation and examples for enumerate function used on the grid was taken from this [GeeksforGeeks](https://www.geeksforgeeks.org/enumerate-in-python/) tutorial.
 
 - Line of code used to clear the terminal after every round and when game is restarted was taken from this [StackOverflow answer](https://stackoverflow.com/a/36941376/26410724). The idea for it was given by my mentor [Alan Bushell](https://github.com/Alan-Bushell).
-```
-import os
-os.system('cls||clear')
-```
+  ```
+  import os
+  os.system('cls||clear')
+  ```
+
+- The function `time.sleep()` was found and explained in this [Code Institute](https://codeinstitute.net/global/blog/how-to-wait-in-python/) post
 
 ## Reminders
 
