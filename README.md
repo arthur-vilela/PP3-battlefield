@@ -61,7 +61,9 @@ Solved indentation issue by moving the if statement into the while loop
 
 - Solution for the positional argument bug was found in [this answer](https://stackoverflow.com/questions/43839536/typeerror-generatecode-takes-0-positional-arguments-but-1-was-given) on StackOverflow
 
-- Solution for the `TypeError: 'Grid' object is not subscriptable` bug was given by developer Fernando Vilela ADD GITHUB LINK
+- Solution for the `TypeError: 'Grid' object is not subscriptable` bug was given by developer [Fernando Vilela](https://www.geeksforgeeks.org/enumerate-in-python/)
+
+- Explanation and examples for enumerate function used on the grid was taken from this [GeeksforGeeks](https://www.geeksforgeeks.org/enumerate-in-python/) tutorial.
 
 ## Reminders
 

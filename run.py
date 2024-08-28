@@ -42,16 +42,21 @@ class Grid:
 
     def display_grid(self, reveal_ships=False):
         """
-        Displays the grid. If reveal_ships is True, shows ship ("S") locations.
-        If false, substitute "S" for "~"
+        Displays the grid with row and column numbers.
+        If reveal_ships is True, shows ship ("S") locations.
+        If False, hides ships by showing "~" instead of "S".
         """
-        for row in self.grid:
+        # Print column numbers
+        col_numbers = '   ' + ' '.join([str(i + 1) for i in range(self.size)])
+        print(col_numbers)
+
+        for index, row in enumerate(self.grid):
             if reveal_ships:
-                print(Back.BLUE + ' '.join(row) + Style.RESET_ALL)
+                # Print row number followed by the row contents
+                print(f"{index + 1:2} " + Back.BLUE + ' '.join(row) + Style.RESET_ALL)
             else:
-                # Replace "S" with "~" to hide ships when displaying the grid
-                print(Back.BLUE + ' '.join(['~' if cell == 'S' else cell for
-                      cell in row]) + Style.RESET_ALL)
+                # Print row number followed by the row contents with ships hidden
+                print(f"{index + 1:2} " + Back.BLUE + ' '.join(['~' if cell == 'S' else cell for cell in row]) + Style.RESET_ALL)
 
     def determine_ship_count(self):
         """
