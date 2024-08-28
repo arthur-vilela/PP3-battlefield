@@ -1,4 +1,5 @@
 import random
+import os
 from colorama import Fore, Back, Style
 
 TITLE = """
@@ -162,6 +163,7 @@ def get_user_input(grid_size):
 
 def main():
     while True:
+        os.system('cls||clear')
         print(Fore.LIGHTBLUE_EX + TITLE + Style.RESET_ALL)
 
         # User defines name for greeting
@@ -204,6 +206,8 @@ def main():
                 print(Fore.YELLOW + "You have already chosen this coordinate.\
                       Please try again.")
                 continue
+
+            os.system('cls||clear')
 
             # Check for a hit and update the grid accordingly
             hit = computer_grid.check_for_ship(row, col)
