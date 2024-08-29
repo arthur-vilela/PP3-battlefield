@@ -1,67 +1,73 @@
 ![flowchart of the game logic](assets/docs/flowchart.png)
 ## Bugs
 
-```
-File "/workspace/PP3-battlefield/run.py", line 4, in __init__
-    self.grid = [['-' for _ in range(size)] for _ in range(size)]
-                                                     ^^^^^^^^^^^
-TypeError: 'str' object cannot be interpreted as an integer
-```
+### The size input was being received as a string, instead of integer.
+  ```
+  File "/workspace/PP3-battlefield/run.py", line 4, in __init__
+      self.grid = [['-' for _ in range(size)] for _ in range(size)]
+                                                      ^^^^^^^^^^^
+  TypeError: 'str' object cannot be interpreted as an integer
+  ```
 
-The size input was being received as a string, instead of integer. Fixed by add int() to the function
+  - Fixed by adding `int()` to the function
 
-```
- $ python3 run.py
-Please enter your name: 
-Art
-Hi Art, enter grid size (e.g., 5 for a 5x5 grid): 
-3
-Traceback (most recent call last):
-  File "/workspace/PP3-battlefield/run.py", line 54, in <module>
-    main()
-  File "/workspace/PP3-battlefield/run.py", line 43, in main
-    player_grid.place_ships()
-TypeError: Grid.place_ships() takes 0 positional arguments but 1 was given
-```
+### TypeError due to positional arguments mismatch
 
-Fixed by adding `self` as a parameter in `place_ships()` function. This parameter is necessary for it to access the Grid instance and check if the cell is empty in `self[row][col]`
+  ```
+  $ python3 run.py
+  Please enter your name: 
+  Art
+  Hi Art, enter grid size (e.g., 5 for a 5x5 grid): 
+  3
+  Traceback (most recent call last):
+    File "/workspace/PP3-battlefield/run.py", line 54, in <module>
+      main()
+    File "/workspace/PP3-battlefield/run.py", line 43, in main
+      player_grid.place_ships()
+  TypeError: Grid.place_ships() takes 0 positional arguments but 1 was given
+  ```
 
+  - Fixed by adding `self` as a parameter in `place_ships()` function. This parameter is necessary for it to access the Grid instance and check if the cell is empty in `self[row][col]`
 
-```
-Traceback (most recent call last):
-  File "/workspace/PP3-battlefield/run.py", line 54, in <module>
-    main()
-  File "/workspace/PP3-battlefield/run.py", line 43, in main
-    player_grid.place_ships()
-  File "/workspace/PP3-battlefield/run.py", line 28, in place_ships
-    if self[row][col] == "-": # Checks if hte cell is empty ("-")
-       ~~~~^^^^^
-TypeError: 'Grid' object is not subscriptable
-```
+  ### TypeError: 'Grid' object is not subscriptable
 
->  This error occurs because of a mistake in how you're trying to access the grid within the place_ships method. Specifically, the line if self[row][col] == "-" is trying to use the Grid object itself as if it were a list, but self refers to the entire Grid object, not just the grid attribute inside it. ADD LINK TO FERNANDOS GITHUB PAGE
+  ```
+  Traceback (most recent call last):
+    File "/workspace/PP3-battlefield/run.py", line 54, in <module>
+      main()
+    File "/workspace/PP3-battlefield/run.py", line 43, in main
+      player_grid.place_ships()
+    File "/workspace/PP3-battlefield/run.py", line 28, in place_ships
+      if self[row][col] == "-": # Checks if hte cell is empty ("-")
+        ~~~~^^^^^
+  TypeError: 'Grid' object is not subscriptable
+  ```
 
-```
-gitpod /workspace/PP3-battlefield (main) $ python3 run.py
-  File "/workspace/PP3-battlefield/run.py", line 148
-    break
-    ^^^^^
-SyntaxError: 'break' outside loop
-```
-Solved indentation issue by moving the if statement into the while loop
+    >  This error occurs because of a mistake in how you're trying to access the grid within the place_ships method.
+    > Specifically, the line if self[row][col] == "-" is trying to use the Grid object itself as if it were a list, but self refers to the entire Grid object, not just the grid attribute inside it. - [**Fernando Vilela**](https://github.com/vmafer)
 
-```
-# Check for victory condition (all ships hit)
-    if all(cell != 'S' for row in computer_grid.grid for cell in row):
-        print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
-        break
-```
+  ### SyntaxError: 'break' outside loop
+  ```
+  gitpod /workspace/PP3-battlefield (main) $ python3 run.py
+    File "/workspace/PP3-battlefield/run.py", line 148
+      break
+      ^^^^^
+  SyntaxError: 'break' outside loop
+  ```
+  Solved indentation issue by moving the if statement into the while loop
+
+  ```
+  # Check for victory condition (all ships hit)
+      if all(cell != 'S' for row in computer_grid.grid for cell in row):
+          print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
+          break
+  ```
 
 ## Credits
 
 - Solution for the positional argument bug was found in [this answer](https://stackoverflow.com/questions/43839536/typeerror-generatecode-takes-0-positional-arguments-but-1-was-given) on StackOverflow
 
-- Solution for the `TypeError: 'Grid' object is not subscriptable` bug was given by developer [Fernando Vilela](https://www.geeksforgeeks.org/enumerate-in-python/)
+- Solution for the `TypeError: 'Grid' object is not subscriptable` bug was given by developer [Fernando Vilela](https://github.com/vmafer)
 
 - Explanation and examples for enumerate function used on the grid was taken from this [GeeksforGeeks](https://www.geeksforgeeks.org/enumerate-in-python/) tutorial.
 
