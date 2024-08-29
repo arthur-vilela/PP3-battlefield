@@ -1,8 +1,12 @@
-![flowchart of the game logic](assets/docs/flowchart.png)
+# Battlefield
+
+The Battleship game is a classic two-player strategy game where the objective is to sink all of the opponent's ships. In this Python implementation, the player competes against the computer.
+
+![flowchart of the game logic](assets/docs/flowchart.pn)
 ## Table of contents
 1. <a href="#ux-design">UX Design</a> 
 2. <a href="#features">Features</a>
-3. <a href="#usability">Usability</a>
+3. <a href="#game-flow">Game Flow</a>
 4. <a href="#technologies-used">Technologies used</a>
 5. <a href="#testing">Testing</a>
 6. <a href="#bugs">Bugs</a>
@@ -13,7 +17,80 @@
 
 ## UX Design
 ## Features
-## Usability
+## Game Flow
+
+Game Flow
+The Battleship game is a classic two-player strategy game where the objective is to sink all of the opponent's ships. In this Python implementation, the player competes against the computer. The game proceeds through the following steps:
+
+> ### 1. Introduction and Setup
+
+- The game begins with a welcome screen displaying the title of the game.
+
+- The player is prompted to enter their name, which will be used throughout the game.
+
+- The player is then asked to choose the size of the grid on which the game will be played. The grid size can range from 3x3 to 8x8.
+
+- Based on the selected grid size, a certain number of ships are placed randomly on both the player’s and the computer’s grids.
+
+> ### 2. Displaying the Grids
+
+- The player's grid is displayed, revealing the locations of their ships (S).
+
+- The computer's grid is also displayed, but with the ships hidden, represented by ~ (water).
+
+>### 3. Gameplay Loop
+
+- The game enters a loop where the player and the computer take turns to attack each other’s grid by selecting coordinates.
+
+  #### 3.1 Player's Turn
+
+  - The player is prompted to enter the row and column numbers for their attack.
+
+  - If the selected coordinate has already been chosen, the player is informed and asked to choose a different coordinate.
+
+  - The game checks whether the player's attack hits a ship on the computer's grid:
+
+    - Hit: The grid is updated to mark the hit with an X, and an explosion animation is displayed.
+
+    - Miss: The grid is updated to mark the miss with an O, and a miss animation is displayed.
+
+  - The updated computer grid is then displayed with hidden ships.
+
+  #### 3.2 Victory Check
+
+- After the player's turn, the game checks if all of the computer's ships have been sunk.
+
+- If all ships are hit, the player wins, and the game congratulates the player before ending the loop.
+
+  #### 3.3 Computer's Turn
+
+- The computer randomly selects a coordinate on the player's grid to attack.
+
+- The game checks whether the computer's attack hits a ship on the player's grid:
+
+  - Hit: The grid is updated to mark the hit with an X, and a message is displayed informing the player of the hit.
+
+  - Miss: The grid is updated to mark the miss with an O, and a message is displayed informing the player of the miss.
+
+- The updated player's grid is then displayed with the locations of ships revealed.
+
+  #### 3.3 Defeat Check
+
+  - After the computer's turn, the game checks if all of the player's ships have been sunk.
+  
+  - If all ships are hit, the computer wins, and the game displays a game-over message before ending the loop.
+
+>### 4. Game Over and Replay
+
+- Once the game loop ends (either due to a player win or loss), the player is asked if they want to play again.
+
+- If the player chooses to play again (Y), the game restarts from the beginning with a new grid setup.
+
+- If the player chooses not to play again (N), the game displays a farewell message and exits.
+
+>### 5. Exiting the Game
+Upon exiting, the game displays a message thanking the player for playing.
+
 ## Technologies Used
 ## Testing
 
