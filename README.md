@@ -6,11 +6,11 @@ The Battleship game is a classic two-player strategy game where the objective is
 
 ## [Repository](https://github.com/arthur-vilela/PP3-battlefield)
 
-![flowchart of the game logic](assets/docs/flowchart.pn)
+
 
 ## Table of contents
 
-1. <a href="#features">Features</a>
+1. <a href="#flowchart">Flowchart</a>
 2. <a href="#game-flow">Game Flow</a>
 3. <a href="#technologies-used">Technologies used</a>
 4. <a href="#testing">Testing</a>
@@ -20,7 +20,9 @@ The Battleship game is a classic two-player strategy game where the objective is
 8. <a href="#credits">Credits</a>
 9. <a href="#acknowledgements">Acknowledgements</a>
 
-## Features
+## Flowchart
+
+![flowchart of the game logic](docs/flowchart.png)
 
 ## Game Flow
 
@@ -174,8 +176,8 @@ Upon exiting, the game displays a message thanking the player for playing.
   TypeError: 'Grid' object is not subscriptable
   ```
 
-    >  This error occurs because of a mistake in how you're trying to access the grid within the place_ships method.
-    > Specifically, the line if self[row][col] == "-" is trying to use the Grid object itself as if it were a list, but self refers to the entire Grid object, not just the grid attribute inside it. - [**Fernando Vilela**](https://github.com/vmafer)
+  >  "This error occurs because of a mistake in how you're trying to access the grid within the place_ships method. 
+Specifically, the line if self[row][col] == "-" is trying to use the Grid object itself as if it were a list, but self refers to the entire Grid object, not just the grid attribute inside it." - [**Fernando Vilela**](https://github.com/vmafer)
 
   ### SyntaxError: 'break' outside loop
   ```
@@ -214,12 +216,6 @@ The code in `run.py` was run in [Code Institute's Python Linter](https://pep8ci.
 
 - The function `time.sleep()` was found and explained in this [Code Institute](https://codeinstitute.net/global/blog/how-to-wait-in-python/) post
 
-## Reminders
-
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
-
 ## Deployment
 
 When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
@@ -228,8 +224,6 @@ When you create the app, you will need to add two buildpacks from the _Settings_
 2. `heroku/nodejs`
 
 You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
 Connect your GitHub repository and deploy as normal.
 
