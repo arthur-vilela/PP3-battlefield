@@ -16,7 +16,9 @@ The Battleship game is a classic two-player strategy game where the objective is
 10. <a href="#acknowledgements">Acknowledgements</a>
 
 ## UX Design
+
 ## Features
+
 ## Game Flow
 
 Game Flow
@@ -92,7 +94,25 @@ The Battleship game is a classic two-player strategy game where the objective is
 Upon exiting, the game displays a message thanking the player for playing.
 
 ## Technologies Used
+
 ## Testing
+
+
+| User story / Feature | Test Method | Expected Outcome | Outcome | Pass/Fail |
+|--|--|--|--|--|
+| **I want to know when my inputs are accepted** | Enter an invalid grid size (e.g., 2 or 9) | The game should display an error message prompting for a valid grid size between 3 and 8. | ![Screenshot of the game display error messages and instructing player to enter a number between 3 and 8](docs/screenshot-grid-size-error.png) | Pass |
+| **I want to know what data to enter and when a wrong value is entered** | Enter a non-integer value when prompted for grid size (e.g., "abc") | The game should display an error message prompting for a valid integer. | ![Screenshot of error message indicating invalid input and instructing player to enter an integer](docs/screenshot-grid-size-type-error.png) | Pass |
+| **I want to place ships on the grid** | Start the game and observe the player's grid after ships are placed | Ships ('S') should be randomly placed on the grid based on grid size. | ![Screenshot of both grids displaying "S" in random coordinates on player's grid](docs/screenshot-ship-on-grid.png) | Pass |
+| **I want to avoid entering a coordinate already used** | Enter a coordinate that has already been shot at | The game should display a message indicating that the coordinate has already been chosen, and prompt the player to select a new one. | ![Screenshot of error message indicating the coordinate has already been chosen](docs/screenshot-repeated-coordinate-error.png) | Pass |
+| **I want to see if I hit or miss the opponent's ship** | Take a shot at a coordinate on the computer's grid | The game should display "Hit!" or "Miss!" depending on whether a ship was hit. | ![Screenshot of ASCII art of a ship and the word "Miss!"](docs/screenshot-hit.png) ![Screenshot of ASCII art of an explosion and the word "Hit!"](docs/screenshot-miss.png) | Pass |
+| **I want to see the grid updated after each turn** | After each shot, observe the computer's grid display | The grid should update with 'X' for hits and 'O' for misses. | ![Screenshot of computer's grid with "O"s for missed coordinates and "X" for hit ones](docs/screenshot-computers-grid.png) | Pass |
+| **I want the computer to take its turn after mine** | Observe the game after the player takes a turn | The computer should randomly select a coordinate on the player's grid and update it with 'X' or 'O'. | ![Screenshot of the computer's turn, their coordinate choice and hit message](docs/screenshot-computers-turn.png) | Pass |
+| **I want to know when I've won the game** | Sink all of the computer's ships | The game should display a congratulatory message indicating the player has won. | ![Screenshot of congratulatory message with user's name](docs/screenshot-congratulations-message.png) | Pass |
+| **I want to know when I've lost the game** | Let the computer sink all of the player's ships | The game should display a message indicating that the player has lost. | ![Screenshot of game over message and the player's final grid](docs/screenshot-game-over.png) | Pass |
+| **I want to play the game again after finishing** | After winning or losing, choose to play again by entering 'Y' | The terminal should be cleared. The game should restart with a new grid and ship placements. | ![Screenshot of initial welcome message with "Battlefield" title in ASCII art](docs/screenshot-welcome-message.png) | Pass |
+| **I want the game to exit when I choose not to play again** | After winning or losing, choose not to play again by entering any value other than "Y" or "y" | The game should display a goodbye message and exit. | ![Screenshot of goodbye message after refusing to play again by entering "4"](docs/screenshot-goodbye-message.png) | Pass |
+
+
 
 ## Bugs
 
