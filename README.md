@@ -194,6 +194,10 @@ Upon exiting, the game displays a message thanking the player for playing.
           break
   ```
 ## Validator testing
+
+The code in `run.py` was run in [Code Institute's Python Linter](https://pep8ci.herokuapp.com/#) showing no errors found.
+
+![Screenshot of CI Python Linter showing no errors](docs/screenshot-ci-python-linter.png)
 ## Credits
 
 - Solution for the positional argument bug was found in [this answer](https://stackoverflow.com/questions/43839536/typeerror-generatecode-takes-0-positional-arguments-but-1-was-given) on StackOverflow
