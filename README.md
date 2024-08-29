@@ -1,4 +1,22 @@
 ![flowchart of the game logic](assets/docs/flowchart.png)
+## Table of contents
+1. <a href="#ux-design">UX Design</a> 
+2. <a href="#features">Features</a>
+3. <a href="#usability">Usability</a>
+4. <a href="#technologies-used">Technologies used</a>
+5. <a href="#testing">Testing</a>
+6. <a href="#bugs">Bugs</a>
+7. <a href="#validator-testing">Validator testing</a>
+8. <a href="#deployment">Deployment</a>
+9. <a href="#credits">Credits</a>
+10. <a href="#acknowledgements">Acknowledgements</a>
+
+## UX Design
+## Features
+## Usability
+## Technologies Used
+## Testing
+
 ## Bugs
 
 ### The size input was being received as a string, instead of integer.
@@ -62,7 +80,7 @@
           print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
           break
   ```
-
+## Validator testing
 ## Credits
 
 - Solution for the positional argument bug was found in [this answer](https://stackoverflow.com/questions/43839536/typeerror-generatecode-takes-0-positional-arguments-but-1-was-given) on StackOverflow
@@ -85,7 +103,7 @@
 - Your dependencies must be placed in the `requirements.txt` file
 - Do not edit any of the other files or your code may not deploy properly
 
-## Creating the Heroku app
+## Deployment
 
 When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
@@ -104,4 +122,5 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 
 ---
 
-Happy coding!
+## Acknowledgements
+

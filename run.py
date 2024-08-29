@@ -26,20 +26,20 @@ SEA = """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 
 EXPLOSION = r"""
-           _ ._  _ , _ ._        |
-        (_ ' ( `  )_  .__)       |
-      ( (  (    )   `)  ) _)     |
-     (__ (_   (_ . _) _) ,__)    |
-         `~~`\\ ' . /`~~`        |
-              ;   ;              |
-              /  \\              |
-_____________/_ __\\_____________|"""
+           _ ._  _ , _ ._        
+        (_ ' ( `  )_  .__)       
+      ( (  (    )   `)  ) _)     
+     (__ (_   (_ . _) _) ,__)    
+         `~~`\\ ' . /`~~`        
+              ;   ;              
+              /  \\              
+_____________/_ __\\_____________"""
 
 BOAT = r"""
-|                 __/___          |
-|           _____/______|         |
-|   _______/_____\_______\_____   |
-|   \              < < <       |  |"""
+                 __/___          
+           _____/______|         
+   _______/_____\_______\_____   
+   \              < < <       |  """
 
 
 class Grid:
@@ -242,14 +242,14 @@ def main():
 
             if hit:
                 print(Fore.GREEN + "\nHit!" + Style.RESET_ALL)
-                print(Back.WHITE + Fore.RED + EXPLOSION + Style.RESET_ALL)
+                print(Fore.RED + EXPLOSION + Style.RESET_ALL)
                 print(Back.BLUE + SEA + Style.RESET_ALL)
             else:
                 print(Fore.RED + "\nMiss!" + Style.RESET_ALL)
                 print(BOAT)
                 print(Back.BLUE + SEA + Style.RESET_ALL)
 
-            time.sleep(1)  # Wait on ASCII art
+            time.sleep(1.5)  # Wait on ASCII art
 
             os.system('cls||clear')  # Clear terminal after hit or miss
 
