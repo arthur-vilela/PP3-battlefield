@@ -2,20 +2,23 @@
 
 The Battleship game is a classic two-player strategy game where the objective is to sink all of the opponent's ships. In this Python implementation, the player competes against the computer.
 
-![flowchart of the game logic](assets/docs/flowchart.pn)
-## Table of contents
-1. <a href="#ux-design">UX Design</a> 
-2. <a href="#features">Features</a>
-3. <a href="#game-flow">Game Flow</a>
-4. <a href="#technologies-used">Technologies used</a>
-5. <a href="#testing">Testing</a>
-6. <a href="#bugs">Bugs</a>
-7. <a href="#validator-testing">Validator testing</a>
-8. <a href="#deployment">Deployment</a>
-9. <a href="#credits">Credits</a>
-10. <a href="#acknowledgements">Acknowledgements</a>
+## [Live Website](https://pp3-battlefield-b25fdc0835a9.herokuapp.com/)
 
-## UX Design
+## [Repository](https://github.com/arthur-vilela/PP3-battlefield)
+
+![flowchart of the game logic](assets/docs/flowchart.pn)
+
+## Table of contents
+
+1. <a href="#features">Features</a>
+2. <a href="#game-flow">Game Flow</a>
+3. <a href="#technologies-used">Technologies used</a>
+4. <a href="#testing">Testing</a>
+5. <a href="#bugs">Bugs</a>
+6. <a href="#validator-testing">Validator testing</a>
+7. <a href="#deployment">Deployment</a>
+8. <a href="#credits">Credits</a>
+9. <a href="#acknowledgements">Acknowledgements</a>
 
 ## Features
 
@@ -34,11 +37,15 @@ The Battleship game is a classic two-player strategy game where the objective is
 
 - Based on the selected grid size, a certain number of ships are placed randomly on both the player’s and the computer’s grids.
 
+  ![Screenshot of the game displaying title, user name input and asking for the grid size](docs/screenshot-flow-intro.png)
+
 > ### 2. Displaying the Grids
 
 - The player's grid is displayed, revealing the locations of their ships (S).
 
 - The computer's grid is also displayed, but with the ships hidden, represented by ~ (water).
+
+  ![Screenshot of player's grid with 3 "S" for ships, and the computer's grid with none](docs/screenshot-flow-display-grid.png)
 
 >### 3. Gameplay Loop
 
@@ -47,22 +54,28 @@ The Battleship game is a classic two-player strategy game where the objective is
   #### 3.1 Player's Turn
 
   - The player is prompted to enter the row and column numbers for their attack.
+    ![Screenshot displaying inputs for row and column](docs/screenshot-flow-attack.png)
 
   - If the selected coordinate has already been chosen, the player is informed and asked to choose a different coordinate.
 
   - The game checks whether the player's attack hits a ship on the computer's grid:
 
+
     - Hit: The grid is updated to mark the hit with an X, and an explosion animation is displayed.
+      ![Screenshot displaying text "Hit!" and explosion in ASCII art](docs/screenshot-flow-hit.png)
 
     - Miss: The grid is updated to mark the miss with an O, and a miss animation is displayed.
+      ![Screenshot displaying the text "Miss!" and a ship in ASCII art](docs/screenshot-flow-miss.png)
 
   - The updated computer grid is then displayed with hidden ships.
+    ![Screenshot with updated grids](docs/screenshot-flow-update-grid.png)
 
   #### 3.2 Victory Check
 
 - After the player's turn, the game checks if all of the computer's ships have been sunk.
 
 - If all ships are hit, the player wins, and the game congratulates the player before ending the loop.
+  ![Screenshot of congratulatory message and inviting player to play again](docs/screenshot-flow-congratulations.png)
 
   #### 3.3 Computer's Turn
 
@@ -82,6 +95,8 @@ The Battleship game is a classic two-player strategy game where the objective is
   
   - If all ships are hit, the computer wins, and the game displays a game-over message before ending the loop.
 
+    ![Screenshot of game over message](docs/screenshot-flow-game-over.png)
+
 >### 4. Game Over and Replay
 
 - Once the game loop ends (either due to a player win or loss), the player is asked if they want to play again.
@@ -89,6 +104,7 @@ The Battleship game is a classic two-player strategy game where the objective is
 - If the player chooses to play again (Y), the game restarts from the beginning with a new grid setup.
 
 - If the player chooses not to play again (N), the game displays a farewell message and exits.
+  ![Screenshot displaying goodbye message](docs/screenshot-flow-goodbye.png)
 
 >### 5. Exiting the Game
 Upon exiting, the game displays a message thanking the player for playing.
