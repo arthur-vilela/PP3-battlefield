@@ -234,14 +234,46 @@ The code in `run.py` was run in [Code Institute's Python Linter](https://pep8ci.
 
 ## Deployment
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### 1. Create a New App on Heroku
+1. Navigate to [Heroku](https://www.heroku.com/) and log in to your account.
+2. Click on the `New` button and select `Create New App`.
+3. Provide a unique name for your application and choose your preferred region.
+4. Click on the `Create app` button.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### 2. Configure App Settings
+1. After creating the app, go to the `Settings` tab.
+2. Under `Config Vars`, click the `Reveal Config Vars` button.
+3. Add a new variable:
+   - KEY: `PORT`
+   - VALUE: `8000`
+4. Click the `Add` button to save the configuration.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+### 3. Set Up Buildpacks
+1. In the `Settings` tab, scroll down to the `Buildpacks` section.
+2. Click on `Add buildpack` and select _**Python**_.
+3. Add another buildpack and select _**Node.js**_.
+4. Ensure that the buildpacks are in this order: Python first, followed by Node.js.
+5. Click the `Save changes` button.
 
-Connect your GitHub repository and deploy as normal.
+### 4. Deploy Your Application
+1. Navigate to the `Deploy` tab.
+2. Under `Deployment method`, select _**GitHub**_.
+3. Connect your GitHub account if it's not already connected.
+4. Search for your repository and select it.
+5. Click `Connect` to link the repository to Heroku.
+
+### 5. Choose Deployment Method
+- **Automatic Deploys**:
+  - Enable automatic deploys to allow Heroku to rebuild and deploy your app every time you push changes to the selected branch.
+  - Choose the branch you want to deploy and click `Enable Automatic Deploys`.
+  
+- **Manual Deploys**:
+  - To deploy manually, scroll down to the `Manual deploy` section.
+  - Select the branch you want to deploy and click `Deploy Branch`.
+
+### 6. Launch Your Application
+- Once the deployment is complete, click on the `Open App` button at the top of the page to view your live application.
+
 
 ## Constraints
 
