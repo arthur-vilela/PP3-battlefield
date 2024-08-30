@@ -219,6 +219,16 @@ Specifically, the line if self[row][col] == "-" is trying to use the Grid object
             break
     ```
 
+---
+
+#### Favicon not being found
+![Screenshot of error messages indicating wrong filepath](docs/screenshot-bug-favicon.png)
+  - Solved by changing the favicon href to an external href to the image itself in your the github repository.
+  - The solution was found by Code Institute's tutors John and Rebecca
+  ```
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/arthur-vilela/PP3-battlefield/main/assets/favicon/favicon.ico"/>
+  ```
+
 ## Validator testing
 
 The code in `run.py` was run in [Code Institute's Python Linter](https://pep8ci.herokuapp.com/#) showing no errors found.
@@ -239,7 +249,9 @@ The code in `run.py` was run in [Code Institute's Python Linter](https://pep8ci.
   os.system('cls||clear')
   ```
 
-- The function `time.sleep()` was found and explained in this [Code Institute](https://codeinstitute.net/global/blog/how-to-wait-in-python/) post
+- The function `time.sleep()` was found and explained in this [Code Institute](https://codeinstitute.net/global/blog/how-to-wait-in-python/) post.
+
+- Solution for the missing favicon bug was found by Code Institute's tutors John and Rebecca.
 
 ## Deployment
 
