@@ -187,6 +187,33 @@ def validate_data(value):
         return value
 
 
+def validate_username(name):
+    """
+    Validate the username input.
+
+    This function checks if the username:
+    - Has more than three characters.
+    - Contains only letters.
+    - Does not contain any numbers.
+
+    Args:
+        name (str): The username input to validate.
+
+    Returns:
+        str: The validated username.
+
+    Raises:
+        ValueError: If the username does not meet the validation criteria.
+    """
+    if len(name) < 3:
+        raise ValueError("Username must be more than three characters long.")
+    if not name.isalpha():
+        raise ValueError(
+            "Username must contain only letters"
+            + "(no numbers or special characters)."
+            )
+    return name
+
 def get_user_input(grid_size):
     """
     Prompt the user to input the row and column separately.
@@ -241,8 +268,14 @@ def main():
         os.system('cls||clear')
         print(Fore.LIGHTBLUE_EX + TITLE + Style.RESET_ALL)
 
-        # User defines name for greeting
-        user_name = input("\nPlease enter your name: \n")
+        # User defines name for greeting with validation
+        while True:
+            try:
+                user_name = input("\nPlease enter your name: \n")
+                user_name = validate_username(user_name)
+                break  # Exit loop if the username is valid
+            except ValueError as e:
+                print(Fore.YELLOW + str(e) + Style.RESET_ALL)
 
         # Validate grid size input for type and size
         while True:
