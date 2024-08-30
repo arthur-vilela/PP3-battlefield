@@ -113,6 +113,22 @@ Upon exiting, the game displays a message thanking the player for playing.
 
 ## Technologies Used
 
+| **Tool/Service** | **Purpose**                                      |
+|------------------|--------------------------------------------------|
+| Python           | Used to write and create the application         |
+| Heroku           | Used to deploy and host the application          |
+| GitHub           | Used to store the code, files and documentation  |
+| Gitpod           | IDE used for creating the application            |
+| Git              | Used for version control                         |
+|[Code:WOF Style checker](https://www.codewof.co.nz/style/python3/)|Used for formatting Python code according to [PEP 8](https://www.python.org/dev/peps/pep-0008/) (Style Guide for Python Code) and PEP 257 (Docstring Conventions).|
+|[Lucidcharts](https://lucid.app/) | Used for creating a flowchart |
+|[ASCII Art Archive](https://www.asciiart.eu/) | Used to get ASCII art images for SEA, EXPLOSION, BOAT and TITLE |
+
+
+
+
+
+
 ## Testing
 
 
