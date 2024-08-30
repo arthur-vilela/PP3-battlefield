@@ -1,7 +1,7 @@
-import random
-import os
-import time
-from colorama import Fore, Back, Style
+import random  # Used for random placement of ships and computer's guesses
+import os  # Used to clear the terminal screen between turns
+import time  # Used to add delays for showing hit/miss animations
+from colorama import Fore, Back, Style  # Used to style the terminal output
 
 TITLE = """
 ······················································
@@ -43,16 +43,34 @@ BOAT = r"""
 
 
 class Grid:
-    def __init__(self, size):  # Size is given via user input
-        # Initialize the grid with water represented by '~'
+    """
+    Represent a Battleship game grid.
+
+    The grid is a 2D array where each cell can contain water, a ship,
+    a hit, or a miss. The grid size is determined by the user.
+    """
+
+    def __init__(self, size):
+        """
+        Initialize the grid with the specified size.
+
+        The grid is initialized with water ('~') in all cells.
+
+        Args:
+            size (int): The size of the grid.
+        """
         self.size = size
         self.grid = [['~' for _ in range(size)] for _ in range(size)]
 
     def display_grid(self, reveal_ships=False):
         """
-        Displays the grid with row and column numbers.
-        If reveal_ships is True, shows ship ("S") locations.
-        If False, hides ships by showing "~" instead of "S".
+        Display the grid with row and column numbers.
+
+        If reveal_ships is True, the ships ('S') are displayed.
+        If False, ships are hidden, and only water ('~') is shown.
+
+        Args:
+            reveal_ships (bool): Whether to reveal the ships on the grid.
         """
         # Print column numbers
         col_numbers = '   ' + ' '.join([str(i + 1) for i in range(self.size)])
@@ -75,8 +93,10 @@ class Grid:
 
     def determine_ship_count(self):
         """
-        Determines the number of ships based on the grid size.
-        Returns the number of ships to place on the grid.
+        Determine the number of ships based on the grid size.
+
+        Returns:
+            int: The number of ships to place on the grid.
         """
         if self.size <= 4:
             return 3
@@ -91,8 +111,9 @@ class Grid:
 
     def place_ships(self):
         """
-        Randomly adds a number of ships to the grid based on the grid size.
-        The number of ships is determined by the determine_ship_count method.
+        Randomly place ships on the grid.
+
+        The number of ships is determined by the grid size.
         """
         ship_count = self.determine_ship_count()
         for _ in range(ship_count):  # Loops for the ship_count amount of times
@@ -105,16 +126,26 @@ class Grid:
 
     def check_for_ship(self, row, col):
         """
-        Checks if there is a ship at the given (row, col) position on the
-        internal grid.
-        Returns True if there is a ship ('S'), otherwise False.
+        Check if there is a ship at the given coordinate.
+
+        Args:
+            row (int): The row index.
+            col (int): The column index.
+
+        Returns:
+            bool: True if there is a ship ('S') at the given coordinate,
+            False otherwise.
         """
         return self.grid[row][col] == "S"
 
     def update_grid(self, row, col, hit):
         """
-        Updates the grid if a ship is hit or missed.
-        Uses 'X' for hit and 'O' for miss.
+        Update the grid based on whether a hit or miss occurred.
+
+        Args:
+            row (int): The row index.
+            col (int): The column index.
+            hit (bool): True if a ship was hit, False if it was a miss.
         """
         if hit:
             self.grid[row][col] = 'X'
@@ -124,8 +155,17 @@ class Grid:
 
 def validate_data(value):
     """
-    Validates that the grid size is an integer between 3 and 8.
-    Raises ValueError with a message if the input is invalid.
+    Validate that the grid size is an integer between 3 and 8.
+
+    Args:
+        value (str): The user input to validate.
+
+    Returns:
+        int: The validated grid size.
+
+    Raises:
+        ValueError: If the input is not a valid integer or not in the
+        range 3 to 8.
     """
     try:
         value = int(value)
@@ -135,13 +175,13 @@ def validate_data(value):
                 )
     if value > 8:
         raise ValueError(
-                f'The maximum grid size is 8 x 8.\n'
-                + f'Please provide a number from 3 to 8'
+                'The maximum grid size is 8 x 8.\n'
+                + 'Please provide a number from 3 to 8'
             )
     elif value < 3:
         raise ValueError(
-                f'The mininum grid size is 3 x 3.\n'
-                + f'Please provide a number from 3 to 8'
+                'The mininum grid size is 3 x 3.\n'
+                + 'Please provide a number from 3 to 8'
             )
     else:
         return value
@@ -149,9 +189,15 @@ def validate_data(value):
 
 def get_user_input(grid_size):
     """
-    Prompts the user to input the row and column separately.
+    Prompt the user to input the row and column separately.
+
     Validates the input to ensure it is within the grid bounds.
-    Returns the corresponding row and column indices.
+
+    Args:
+        grid_size (int): The size of the grid.
+
+    Returns:
+        tuple: A tuple containing the row and column indices.
     """
     while True:
         try:
@@ -160,7 +206,7 @@ def get_user_input(grid_size):
             if row < 0 or row >= grid_size:
                 print(
                     Fore.YELLOW +
-                    f"Invalid row." +
+                    "Invalid row." +
                     f"Please enter a number between 1 and {grid_size}."
                     + Style.RESET_ALL
                 )
@@ -168,11 +214,11 @@ def get_user_input(grid_size):
 
             # Prompt for column input
             col = int(input(
-                    f"Enter the column number"
+                    "Enter the column number"
                     + f"(1 to {grid_size}): ")) - 1
             if col < 0 or col >= grid_size:
                 print(
-                    Fore.YELLOW + f"Invalid column." +
+                    Fore.YELLOW + "Invalid column." +
                     f"Please enter a number between 1 and {grid_size}."
                     + Style.RESET_ALL
                 )
@@ -185,6 +231,12 @@ def get_user_input(grid_size):
 
 
 def main():
+    """
+    Run the Battleship game.
+
+    This function controls the overall game flow, including setup, gameplay,
+    and replay options.
+    """
     while True:
         os.system('cls||clear')
         print(Fore.LIGHTBLUE_EX + TITLE + Style.RESET_ALL)
