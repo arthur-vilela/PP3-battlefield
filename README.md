@@ -1,6 +1,7 @@
 # Battlefield
 
-The Battleship game is a classic two-player strategy game where the objective is to sink all of the opponent's ships. In this Python implementation, the player competes against the computer.
+This project was created to provide a simple yet engaging experience for those seeking a quick distraction through a classic, retro-inspired game. It is designed for individuals who enjoy nostalgic, old-school games and are looking for a fun and accessible way to pass the time. The target audience includes casual gamers, fans of classic strategy games like Battleship, and anyone who appreciates the charm of retro-style graphics and gameplay. Whether you're looking to take a break from your day or relive the joy of a traditional board game in a digital format, this project offers a delightful way to do so.
+
 
 ## [Live Website](https://pp3-battlefield-b25fdc0835a9.herokuapp.com/)
 
@@ -26,7 +27,6 @@ The Battleship game is a classic two-player strategy game where the objective is
 
 ## Game Flow
 
-Game Flow
 The Battleship game is a classic two-player strategy game where the objective is to sink all of the opponent's ships. In this Python implementation, the player competes against the computer. The game proceeds through the following steps:
 
 > ### 1. Introduction and Setup
@@ -211,11 +211,13 @@ Specifically, the line if self[row][col] == "-" is trying to use the Grid object
           print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
           break
   ```
+
 ## Validator testing
 
 The code in `run.py` was run in [Code Institute's Python Linter](https://pep8ci.herokuapp.com/#) showing no errors found.
 
 ![Screenshot of CI Python Linter showing no errors](docs/screenshot-ci-python-linter.png)
+
 ## Credits
 
 - Solution for the positional argument bug was found in [this answer](https://stackoverflow.com/questions/43839536/typeerror-generatecode-takes-0-positional-arguments-but-1-was-given) on StackOverflow
