@@ -141,6 +141,7 @@ Upon exiting, the game displays a message thanking the player for playing.
 
 | User story / Feature | Test Method | Expected Outcome | Outcome | Pass/Fail |
 |--|--|--|--|--|
+| **I want to know if my username input is accepted**  | Enter an invalid username, non-aplha "333", less than 3 characters "a", an empty space within the name "aaa aa" | The game should display an error message prompting for a valid user name. | ![Screenshot of the game displayin error messages and instructing the player to enter a correct input](docs/screenshot-name-validation.png) | Pass |
 | **I want to know when my inputs are accepted** | Enter an invalid grid size (e.g., 2 or 9) | The game should display an error message prompting for a valid grid size between 3 and 8. | ![Screenshot of the game display error messages and instructing player to enter a number between 3 and 8](docs/screenshot-grid-size-error.png) | Pass |
 | **I want to know what data to enter and when a wrong value is entered** | Enter a non-integer value when prompted for grid size (e.g., "abc") | The game should display an error message prompting for a valid integer. | ![Screenshot of error message indicating invalid input and instructing player to enter an integer](docs/screenshot-grid-size-type-error.png) | Pass |
 | **I want to place ships on the grid** | Start the game and observe the player's grid after ships are placed | Ships ('S') should be randomly placed on the grid based on grid size. | ![Screenshot of both grids displaying "S" in random coordinates on player's grid](docs/screenshot-ship-on-grid.png) | Pass |
@@ -229,7 +230,7 @@ Specifically, the line if self[row][col] == "-" is trying to use the Grid object
 
 #### Favicon not being found
 ![Screenshot of error messages indicating wrong filepath](docs/screenshot-bug-favicon.png)
-  - Solved by changing the favicon href to an external href to the image itself in your the github repository.
+  - Solved by changing the favicon href to an external href to the image itself in the project's Github repository.
   - The solution was found by Code Institute's tutors John and Rebecca
   ```
   <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/arthur-vilela/PP3-battlefield/main/assets/favicon/favicon.ico"/>
@@ -249,7 +250,7 @@ The code in `run.py` was run in [Code Institute's Python Linter](https://pep8ci.
 
 - Explanation and examples for enumerate function used on the grid was taken from this [GeeksforGeeks](https://www.geeksforgeeks.org/enumerate-in-python/) tutorial.
 
-- Line of code used to clear the terminal after every round and when game is restarted was taken from this [StackOverflow answer](https://stackoverflow.com/a/36941376/26410724). The idea for it was given by my mentor [Alan Bushell](https://github.com/Alan-Bushell).
+- Line of code used to clear the terminal after every round and when the game is restarted was taken from this [StackOverflow answer](https://stackoverflow.com/a/36941376/26410724). The idea for it was given by my mentor [Alan Bushell](https://github.com/Alan-Bushell).
   ```
   import os
   os.system('cls||clear')
@@ -295,7 +296,7 @@ The code in `run.py` was run in [Code Institute's Python Linter](https://pep8ci.
   - Choose the branch you want to deploy and click `Enable Automatic Deploys`.
   
 - **Manual Deploys**:
-  - To deploy manually, scroll down to the `Manual deploy` section.
+  - To deploy manually, scroll down to the `Manual Deploy` section.
   - Select the branch you want to deploy and click `Deploy Branch`.
 
 ### 6. Launch Your Application
