@@ -113,16 +113,17 @@ Upon exiting, the game displays a message thanking the player for playing.
 
 ## Technologies Used
 
-| **Tool/Service** | **Purpose**                                      |
-|------------------|--------------------------------------------------|
-| Python           | Used to write and create the application         |
-| Heroku           | Used to deploy and host the application          |
-| GitHub           | Used to store the code, files and documentation  |
-| Gitpod           | IDE used for creating the application            |
-| Git              | Used for version control                         |
-|[Code:WOF Style checker](https://www.codewof.co.nz/style/python3/)|Used for formatting Python code according to [PEP 8](https://www.python.org/dev/peps/pep-0008/) (Style Guide for Python Code) and PEP 257 (Docstring Conventions).|
-|[Lucidcharts](https://lucid.app/) | Used for creating a flowchart |
-|[ASCII Art Archive](https://www.asciiart.eu/) | Used to get ASCII art images for SEA, EXPLOSION, BOAT and TITLE |
+| **Tool/Service**                              | **Purpose**                                      |
+|-----------------------------------------------|--------------------------------------------------|
+| Python                                        | Used to write and create the application         |
+| Heroku                                        | Used to deploy and host the application          |
+| GitHub                                        | Used to store the code, files and documentation  |
+| Gitpod                                        | IDE used for creating the application            |
+| Git                                           | Used for version control                         |
+|[Code:WOF Style checker](https://www.codewof.co.nz/style/python3/)|Used for formatting Python code according to [PEP 8](https://www.python.org/dev/peps/pep-0008/) (Style Guide for Python Code) and PEP 257 (Docstring Conventions).                      |
+|[Lucidcharts](https://lucid.app/)              | Used for creating a flowchart                    |
+|[ASCII Art Archive](https://www.asciiart.eu/)  | Used to get ASCII art images for SEA, EXPLOSION, BOAT and TITLE |
+|[Colorama](https://pypi.org/project/colorama/) | Used to add color to font and background, improving overall visual appeal to the game |
 
 
 
@@ -178,7 +179,7 @@ Upon exiting, the game displays a message thanking the player for playing.
 
   - Fixed by adding `self` as a parameter in `place_ships()` function. This parameter is necessary for it to access the Grid instance and check if the cell is empty in `self[row][col]`
 
-  ### TypeError: 'Grid' object is not subscriptable
+### TypeError: 'Grid' object is not subscriptable
 
   ```
   Traceback (most recent call last):
@@ -195,7 +196,7 @@ Upon exiting, the game displays a message thanking the player for playing.
   >  "This error occurs because of a mistake in how you're trying to access the grid within the place_ships method. 
 Specifically, the line if self[row][col] == "-" is trying to use the Grid object itself as if it were a list, but self refers to the entire Grid object, not just the grid attribute inside it." - [**Fernando Vilela**](https://github.com/vmafer)
 
-  ### SyntaxError: 'break' outside loop
+### SyntaxError: 'break' outside loop
   ```
   gitpod /workspace/PP3-battlefield (main) $ python3 run.py
     File "/workspace/PP3-battlefield/run.py", line 148
@@ -285,3 +286,5 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 
 ## Acknowledgements
 
+- My mentor Alan Bushell for great counseling and positive reinforcement
+- My wife Kyra Sendler for user testing and encouragement
