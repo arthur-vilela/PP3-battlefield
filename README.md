@@ -33,7 +33,13 @@ The Battleship game is a classic two-player strategy game where the objective is
 
 - The game begins with a welcome screen displaying the title of the game.
 
-- The player is prompted to enter their name, which will be used throughout the game.
+- The player is prompted to enter their name. The input is validated to ensure it meets specific criteria:
+  - The username must have more than three characters.
+  - It must contain only letters, with no numbers or special characters.
+
+  ![Screenshot of error messages after wrong name inputs](docs/screenshot-name-validation.png)
+
+  - If the input is invalid, an error message is displayed, and the player is prompted to enter a valid name.
 
 - The player is then asked to choose the size of the grid on which the game will be played. The grid size can range from 3x3 to 8x8.
 
