@@ -151,7 +151,7 @@ Upon exiting, the game displays a message thanking the player for playing.
 
 ## Bugs
 
-### The size input was being received as a string, instead of integer.
+#### The size input was being received as a string, instead of integer.
   ```
   File "/workspace/PP3-battlefield/run.py", line 4, in __init__
       self.grid = [['-' for _ in range(size)] for _ in range(size)]
@@ -161,7 +161,9 @@ Upon exiting, the game displays a message thanking the player for playing.
 
   - Fixed by adding `int()` to the function
 
-### TypeError due to positional arguments mismatch
+---
+
+#### TypeError due to positional arguments mismatch
 
   ```
   $ python3 run.py
@@ -179,7 +181,9 @@ Upon exiting, the game displays a message thanking the player for playing.
 
   - Fixed by adding `self` as a parameter in `place_ships()` function. This parameter is necessary for it to access the Grid instance and check if the cell is empty in `self[row][col]`
 
-### TypeError: 'Grid' object is not subscriptable
+---
+
+#### TypeError: 'Grid' object is not subscriptable
 
   ```
   Traceback (most recent call last):
@@ -196,7 +200,9 @@ Upon exiting, the game displays a message thanking the player for playing.
   >  "This error occurs because of a mistake in how you're trying to access the grid within the place_ships method. 
 Specifically, the line if self[row][col] == "-" is trying to use the Grid object itself as if it were a list, but self refers to the entire Grid object, not just the grid attribute inside it." - [**Fernando Vilela**](https://github.com/vmafer)
 
-### SyntaxError: 'break' outside loop
+---
+
+#### SyntaxError: 'break' outside loop
   ```
   gitpod /workspace/PP3-battlefield (main) $ python3 run.py
     File "/workspace/PP3-battlefield/run.py", line 148
@@ -204,14 +210,14 @@ Specifically, the line if self[row][col] == "-" is trying to use the Grid object
       ^^^^^
   SyntaxError: 'break' outside loop
   ```
-  Solved indentation issue by moving the if statement into the while loop
+  - Solved indentation issue by moving the if statement into the while loop
 
-  ```
-  # Check for victory condition (all ships hit)
-      if all(cell != 'S' for row in computer_grid.grid for cell in row):
-          print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
-          break
-  ```
+    ```
+    # Check for victory condition (all ships hit)
+        if all(cell != 'S' for row in computer_grid.grid for cell in row):
+            print(f"\nCongratulations {user_name}, you've sunk all the computer's ships!")
+            break
+    ```
 
 ## Validator testing
 
